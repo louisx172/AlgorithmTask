@@ -1,10 +1,15 @@
-//Algoritmo
+//Algoritmo SelectionSort.js
 
 const PromptSync = require("prompt-sync");
 const prompt = require("prompt-sync")();
 
 let cantidad;
 let aux;
+let aux2 = []
+const arreglo = new Array(cantidad);
+let arreglo2 = []
+let min
+
 do
 {
     cantidad = prompt("Ingresa la cantidad de números a ordenar: ");
@@ -12,8 +17,6 @@ do
 }
 while( isNaN(cantidad) )
 
-
-const arreglo = new Array(cantidad);
 for(let i = 0; i < cantidad; i++)
 {
     do
@@ -26,28 +29,20 @@ for(let i = 0; i < cantidad; i++)
 
 console.log(arreglo);
 
-const arreglo2 = new Array(cantidad);
-
-let min
-for (k = 0 ; k < cantidad - 1; k++) 
-{
-    
-    min = Math.min.apply(null, arreglo);
-    console.log("m: " + min)
-    aux2 = arreglo.indexOf(min)
-    
-    
-    for (i = 0; i < cantidad - 1; i++) 
+for (k = 0 ; k < 1; k++) 
+{ 
+    for (i = 0; i < cantidad - k; i++) 
     {  
-        aux = arreglo[i]
-        arreglo[i] = arreglo[aux2]
+        min = Math.min.apply(null, arreglo);
+        console.log("min: " + min)
+        aux2 = arreglo.indexOf(min)
+        aux = arreglo[0]
+        arreglo[0] = arreglo[aux2]
         arreglo[aux2] = aux
-        //arreglo2[i] = arreglo[i]
-        
-        console.log(arreglo.slice(arreglo[i+1],arreglo[cantidad]))
+        console.log(arreglo)
+        arreglo2[i] = arreglo[0]
+        arreglo.shift()
+        console.log(arreglo)
     }
-    
 }
-console.log(" lol " + arreglo.indexOf(min))
-console.log(" lol " + arreglo[1])
-console.log(arreglo);
+console.log(arreglo2);
